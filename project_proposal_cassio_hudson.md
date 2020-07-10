@@ -11,10 +11,10 @@ My app is called Triva. Players will pick multiple choice questions and win poin
 ## Wire Frames
 
 **Initial Landing View**
-(wireframe-start.png)
+(https://git.generalassemb.ly/cassioblu55/project-1/blob/master/wireframe-start.png)
 
 **Results View**
-(wireframe-start.png)
+(https://git.generalassemb.ly/cassioblu55/project-1/blob/master/wireframe-end.png)
 
 
 ## User Stories
