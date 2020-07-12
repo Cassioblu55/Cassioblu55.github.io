@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cassio Trivia</title>
+        <link rel="stylesheet" href="styles.css">
+        
+	</head>
+	<body>
+		<h1>Welcome to Trivia</h1>
+        <div class="row">
+            <div class="columnHeader column" id="columnHeader0"></div>
+            <div class="columnHeader column" id="columnHeader1"></div>
+            <div class="columnHeader column" id="columnHeader2"></div>
+            <div class="columnHeader column" id="columnHeader3"></div>
+        </div>
+        <div class="row" id="questionRow0">
+            <button class="column questionButton" id="question0">100</button>
+            <button class="column questionButton" id="question1">100</button>
+            <button class="column questionButton" id="question2">100</button>
+            <button class="column questionButton" id="question3">100</button>
+        </div>
+        <div class="row" id="questionRow1">
+            <button class="column questionButton" id="question0">200</button>
+            <button class="column questionButton" id="question1">200</button>
+            <button class="column questionButton" id="question2">200</button>
+            <button class="column questionButton" id="question3">200</button>
+        </div>
+        <div class="row" id="questionRow2">
+            <button class="column questionButton" id="question0">300</button>
+            <button class="column questionButton" id="question1">300</button>
+            <button class="column questionButton" id="question2">300</button>
+            <button class="column questionButton" id="question3">300</button>
+        </div>
+        <div class="row" id="questionRow3">
+            <button class="column questionButton" id="question0">400</button>
+            <button class="column questionButton" id="question1">400</button>
+            <button class="column questionButton" id="question2">400</button>
+            <button class="column questionButton" id="question3">400</button>
+        </div>
+        <div class="row" id="questionRow4">
+            <button class="column questionButton" id="question0">500</button>
+            <button class="column questionButton" id="question1">500</button>
+            <button class="column questionButton" id="question2">500</button>
+            <button class="column questionButton" id="question3">500</button>
+        </div>
+
+        <!-- The Modal -->
+        <div id="questionModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1 id="modal-category-header"></h1>
+                <h3 style="font-weight:normal" id="model-question"></h3>
+                <div class="row">
+                    <button class="modalColumn answerButton" id="answer0"></button>
+                    <button class="modalColumn answerButton" id="answer1"></button>
+                </div>
+                <div class="row">
+                    <button class="modalColumn answerButton" id="answer2"></button>
+                    <button class="modalColumn answerButton" id="answer3"></button>
+                </div>
+
+            </div>
+        </div>
+
+		<script src="scripts.js"></script>
+	</body>
+</html>
