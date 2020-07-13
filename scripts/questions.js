@@ -14,7 +14,7 @@ const questions = {
 };
 
 //This will run each time questions updates
-//Once all questions have been found it will
+//once all questions have been found it will
 //display the game board
 questions.registerListener(function (q) {
 	if (Object.keys(q).length == 4) {
@@ -54,10 +54,11 @@ for (category of categories) {
 		const url = getUrl(amount, category, difficulty);
 
 		fetch(url)
-			.then((res) => {
+		.then((res) => {
 				return res.json();
 			})
 			.then((res) => {
+				console.log(res);
 				let categoryName = url.includes('category')
 					? res.results[0].category
 					: 'Potpourri';
@@ -174,10 +175,10 @@ function displayModule(question, questionButton, score) {
 	modal.style.display = 'block';
 
 	const modalHeader = document.getElementById('modal-category-header');
-	modalHeader.innerText = question.category;
+	modalHeader.innerText = fixQuotes(question.category);
 
 	const modalQuestion = document.getElementById('model-question');
-	modalQuestion.innerText = question.question;
+	modalQuestion.innerText = fixQuotes(question.question);
 
 	let answerChoicesArray = question.incorrect_answers;
 	answerChoicesArray.push(question.correct_answer);
@@ -185,17 +186,26 @@ function displayModule(question, questionButton, score) {
 
 	for (let i = 0; i < answerChoicesArray.length; i++) {
 		const answerButton = getAnswerButtonByIndex(i);
-		answerButton.innerText = answerChoicesArray[i];
+		answerButton.innerText = fixQuotes(answerChoicesArray[i]);
 		answerButton.addEventListener('click', function () {
 			answerPicked(
 				answerChoicesArray[i],
-				question.correct_answer,
+				fixQuotes(question.correct_answer),
 				i,
 				questionButton,
 				score
 			);
 		});
 	}
+}
+
+function fixQuotes(string){
+	return string
+		.replace('&quot;', "'")
+		.replace('&quot;', "'")
+		.replace('&#039;', "'")
+		.replace('&amp;', '&')
+		.replace('&eacute;', 'é');
 }
 
 function shuffleArray(array) {
@@ -238,17 +248,27 @@ function answerPicked(
 			answerButton.classList.add('rightAnswer');
 		}
 		answerButton.disabled = true;
-    }
-    questionButton.disabled = true;
+	}
+	questionButton.disabled = true;
 
-    processScore(isAnswerCorrect, score);
+	processScore(isAnswerCorrect, score);
+
+	questionCompleted();
 }
 
 function getAnswerButtonByIndex(index) {
 	return document.getElementById(`answer${index}`);
 }
 
-function processScore(isAnswerCorrect, score){
-    console.log(isAnswerCorrect);
-    console.log(score);
+function questionCompleted() {
+	let allQuestionsDisabled = true;
+	const totalNumberOfQuestions = document.querySelectorAll('.questionButton');
+	for (questionButton of totalNumberOfQuestions) {
+		if (questionButton.disabled != true) {
+			allQuestionsDisabled = false;
+		}
+	}
+	if (allQuestionsDisabled) {
+		displayWinScreen();
+	}
 }

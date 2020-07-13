@@ -34,6 +34,10 @@
   width: 80%;
 }
 
+.activePlayer {
+  font-weight: bold;
+}
+
 /* The Close Button */
 .close {
   color: #aaaaaa;
@@ -60,4 +64,8 @@
 
 .rightAnswer{
     color: green
+}
+
+.playerNameInputRow{
+  margin: 5px
 }
