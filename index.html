@@ -2,107 +2,258 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cassio Trivia</title>
-        <link rel="stylesheet" href="styles.css">
-        
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+		/>
+		<title>Cassio Trivia</title>
+		<!-- Latest compiled and minified CSS -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+			integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+			crossorigin="anonymous"
+		/>
+
+		<!-- Optional theme -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+			integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ"
+			crossorigin="anonymous"
+		/>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+			integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+			crossorigin="anonymous"
+		></script>
+
+		<link rel="stylesheet" href="styles.css" />
 	</head>
-	<body>
-        <h1>Welcome to Trivia</h1>
-        
-        <div class="row" id="playerNameDisplayContainer"></div>
+	<body class="container">
+		<h1>Cassio Trivia</h1>
 
-        <div class="row">
-            <div class="columnHeader column" id="columnHeader0"></div>
-            <div class="columnHeader column" id="columnHeader1"></div>
-            <div class="columnHeader column" id="columnHeader2"></div>
-            <div class="columnHeader column" id="columnHeader3"></div>
-        </div>
-        <div class="row" id="questionRow0">
-            <button class="column questionButton" id="question0">100</button>
-            <button class="column questionButton" id="question1">100</button>
-            <button class="column questionButton" id="question2">100</button>
-            <button class="column questionButton" id="question3">100</button>
-        </div>
-        <div class="row" id="questionRow1">
-            <button class="column questionButton" id="question0">200</button>
-            <button class="column questionButton" id="question1">200</button>
-            <button class="column questionButton" id="question2">200</button>
-            <button class="column questionButton" id="question3">200</button>
-        </div>
-        <div class="row" id="questionRow2">
-            <button class="column questionButton" id="question0">300</button>
-            <button class="column questionButton" id="question1">300</button>
-            <button class="column questionButton" id="question2">300</button>
-            <button class="column questionButton" id="question3">300</button>
-        </div>
-        <div class="row" id="questionRow3">
-            <button class="column questionButton" id="question0">400</button>
-            <button class="column questionButton" id="question1">400</button>
-            <button class="column questionButton" id="question2">400</button>
-            <button class="column questionButton" id="question3">400</button>
-        </div>
-        <div class="row" id="questionRow4">
-            <button class="column questionButton" id="question0">500</button>
-            <button class="column questionButton" id="question1">500</button>
-            <button class="column questionButton" id="question2">500</button>
-            <button class="column questionButton" id="question3">500</button>
-        </div>
+		<div class="row" id="playerNameDisplayContainer"></div>
 
-        <!-- The Question Modal -->
-        <div id="questionModal" class="modal">
-            <!-- Question Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h1 id="modal-category-header"></h1>
-                <h3 style="font-weight:normal" id="model-question"></h3>
-                <div class="row">
-                    <button class="modalColumn answerButton" id="answer0"></button>
-                    <button class="modalColumn answerButton" id="answer1"></button>
+		<div class="row">
+			<div class="columnHeader col-xs-3" id="columnHeader0"></div>
+			<div class="columnHeader col-xs-3" id="columnHeader1"></div>
+			<div class="columnHeader col-xs-3" id="columnHeader2"></div>
+			<div class="columnHeader col-xs-3" id="columnHeader3"></div>
+		</div>
+		<div class="row" id="questionRow0">
+			<div class="col-xs-3" id="question0">
+				<button class="btn btn-block btn-default questionButton">
+					100
+				</button>
+			</div>
+			<div class="col-xs-3" id="question1">
+				<button class="btn btn-block btn-default questionButton">
+					100
+				</button>
+			</div>
+			<div class="col-xs-3" id="question2">
+				<button class="btn btn-block btn-default questionButton">
+					100
+				</button>
+			</div>
+			<div class="col-xs-3" id="question3">
+				<button class="btn btn-block btn-default questionButton">
+					100
+				</button>
+			</div>
+		</div>
+		<div class="row" id="questionRow1">
+			<div class="col-xs-3" id="question0">
+				<button class="btn btn-block btn-default questionButton">
+					200
+				</button>
+			</div>
+			<div class="col-xs-3" id="question1">
+				<button class="btn btn-block btn-default questionButton">
+					200
+				</button>
+			</div>
+			<div class="col-xs-3" id="question2">
+				<button class="btn btn-block btn-default questionButton">
+					200
+				</button>
+			</div>
+			<div class="col-xs-3" id="question3">
+				<button class="btn btn-block btn-default questionButton">
+					200
+				</button>
+			</div>
+		</div>
+		<div class="row" id="questionRow2">
+			<div class="col-xs-3" id="question0">
+				<button class="btn btn-block btn-default questionButton">
+					300
+				</button>
+			</div>
+			<div class="col-xs-3" id="question1">
+				<button class="btn btn-block btn-default questionButton">
+					300
+				</button>
+			</div>
+			<div class="col-xs-3" id="question2">
+				<button class="btn btn-block btn-default questionButton">
+					300
+				</button>
+			</div>
+			<div class="col-xs-3" id="question3">
+				<button class="btn btn-block btn-default questionButton">
+					300
+				</button>
+			</div>
+		</div>
+		<div class="row" id="questionRow3">
+			<div class="col-xs-3" id="question0">
+				<button class="btn btn-block btn-default questionButton">
+					400
+				</button>
+			</div>
+			<div class="col-xs-3" id="question1">
+				<button class="btn btn-block btn-default questionButton">
+					400
+				</button>
+			</div>
+			<div class="col-xs-3" id="question2">
+				<button class="btn btn-block btn-default questionButton">
+					400
+				</button>
+			</div>
+			<div class="col-xs-3" id="question3">
+				<button class="btn btn-block btn-default questionButton">
+					400
+				</button>
+			</div>
+		</div>
+		<div class="row" id="questionRow4">
+			<div class="col-xs-3" id="question0">
+				<button class="btn btn-block btn-default questionButton">
+					500
+				</button>
+			</div>
+			<div class="col-xs-3" id="question1">
+				<button class="btn btn-block btn-default questionButton">
+					500
+				</button>
+			</div>
+			<div class="col-xs-3" id="question2">
+				<button class="btn btn-block btn-default questionButton">
+					500
+				</button>
+			</div>
+			<div class="col-xs-3" id="question3">
+				<button class="btn btn-block btn-default questionButton">
+					500
+				</button>
+			</div>
+		</div>
+
+		<!-- The Question Modal -->
+		<div id="questionModal" class="modal">
+			<!-- Question Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h1 id="modal-category-header"></h1>
+				<h3 style="font-weight: normal;" id="model-question"></h3>
+				<div class="row">
+					<div class="col-xs-6">
+						<button
+							class="btn btn-block btn-default answerButton"
+							id="answer0"
+						></button>
+					</div>
+					<div class="col-xs-6">
+						<button
+							class="btn btn-block btn-default answerButton"
+							id="answer1"
+						></button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<button
+							class="btn btn-block btn-default answerButton"
+							id="answer2"
+						></button>
+					</div>
+					<div class="col-xs-6">
+						<button
+							class="btn btn-block btn-default answerButton"
+							id="answer3"
+						></button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- The Player Select Modal -->
+		<div id="playerSelectModal" class="modal" style="display: block;">
+			<!-- Player select content -->
+			<div class="modal-content">
+				<h1 id="modal-category-header" class="modal-header">
+					Welcome to Cassio Trivia
+				</h1>
+				<div class="row">
+					<div class="col-md-2">
+						<label for="numberOfPlayers">Number of Players:</label>
+						<select
+							class="form-control"
+							id="numberOfPlayersSelector"
+							name="numberOfPlayers"
+						>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+						<div id="playerNameContainer"></div>
+					</div>
+				</div>
+				<button id="playerNameSubmitButton" class="btn btn-default">
+					Submit
+				</button>
+                <div style="margin-top: 10px"class="row">
+                    <div class="col-md-8">
+                        <span style="font-weight:bold">Instructions: </span>Hello! All questions will have four answers with one correct
+                        answer. There will be three catagories with specific questions and one category that can be anything. If a
+                        player answers a question correctly they will be able to pick another question to answer. Incorrect answers will
+                        result in the next player being allowed to answer questions. 😉
+                    </div>
                 </div>
-                <div class="row">
-                    <button class="modalColumn answerButton" id="answer2"></button>
-                    <button class="modalColumn answerButton" id="answer3"></button>
-                </div>
-
             </div>
-        </div>
+            
 
-        <!-- The Player Select Modal -->
-        <div id="playerSelectModal" class="modal" style="display: block">
-            <!-- Player select content -->
-            <div class="modal-content">
-                <h1 id="modal-category-header">Welcome to Cassio Trivia</h1>
-                <label for="numberOfPlayers">Number of Players:</label>
-                <select id="numberOfPlayersSelector" name="numberOfPlayers">
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
+		</div>
 
-                <div id="playerNameContainer"></div>
+		<!-- The Winner Modal -->
+		<div id="winnerModal" class="modal">
+			<!-- Winner content -->
+			<div class="modal-content">
+				<span class="close" onClick="window.location.reload();">&times;</span>
+				<h1 id="modal-category-header">Congratulations!</h1>
+				<h2 style="color: gold">First Place: <span id="winner0"></span></h2>
+				<h3 style="color: silver">Second Place: <span id="winner1"></span></h3>
+				<h4 style="color: #cd7f32; display: none;">Third Place: <span id="winner2"></span></h4>
+				<h5 style="color: #b87333; display: none;">Fourth Place: <span id="winner3"></span></h5>
+			</div>
+		</div>
 
-                <button id="playerNameSubmitButton">Submit</button>
-            </div>
-        </div>
-
-        <!-- The Winner Modal -->
-        <div id="winnerModal" class="modal">
-            <!-- Winner content -->
-            <div class="modal-content">
-                <span class="close" onClick="window.location.reload();">&times;</span>
-                <h1 id="modal-category-header">Congratulations!</h1>
-                <h2>First Place: <span id="winner0"></span></h2>
-                <h3>Second Place: <span id="winner1"></span></h3>
-                <h4 style="display: none">Third Place: <span id="winner2"></span></h4>
-                <h5 style="display: none">Fourth Place: <span id="winner3"></span></h5>
-            </div>
-        </div>
-
-        <script src="scripts/scoring.js"></script>
-        <script src="scripts/players.js"></script>
-        <script src="scripts/questions.js"></script>
-        <script src="scripts/winner.js"></script>
-        <script src="scripts/dev.js"></script>
+		<script src="scripts/scoring.js"></script>
+		<script src="scripts/players.js"></script>
+		<script src="scripts/questions.js"></script>
+		<script src="scripts/winner.js"></script>
+		<script src="scripts/dev.js"></script>
 	</body>
 </html>

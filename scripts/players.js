@@ -21,20 +21,23 @@ function updatePlayerInput() {
 	playerNameContainer.innerHTML = '';
 	for (let i = 0; i < numberOfPlayers; i++) {
 		const row = document.createElement('div');
-		row.classList.add('row');
-		row.classList.add('playerNameInputRow');
+		row.classList.add('form-group');
 		playerNameContainer.appendChild(row);
+
+		const column = document.createElement('div');
+        row.appendChild(column);
 
 		const label = document.createElement('label');
 		label.setAttribute('for', `player${i}Input`);
 		label.innerHTML = `Player ${i + 1} name:`;
-		row.appendChild(label);
+		column.appendChild(label);
 
 		const input = document.createElement('input');
 		input.setAttribute('id', `player${i}Input`);
 		input.classList.add('playerNameInput');
+		input.classList.add('form-control');
 		input.addEventListener('change', playerNameEntered);
-		row.appendChild(input);
+		column.appendChild(input);
 	}
 	playerNameEntered();
 }

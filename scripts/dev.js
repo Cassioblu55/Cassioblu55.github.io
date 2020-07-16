@@ -1,4 +1,5 @@
 let inDevMode = false;
+let devShowFinalScreen = false;
 
 setDevPlayerNames();
 

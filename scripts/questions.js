@@ -54,11 +54,10 @@ for (category of categories) {
 		const url = getUrl(amount, category, difficulty);
 
 		fetch(url)
-		.then((res) => {
+			.then((res) => {
 				return res.json();
 			})
 			.then((res) => {
-				console.log(res);
 				let categoryName = url.includes('category')
 					? res.results[0].category
 					: 'Potpourri';
@@ -122,11 +121,12 @@ function setQuestions(questions, column, difficultly) {
 
 		let questionButton;
 		const rowChildren = questionRow.childNodes;
+
 		for (rowChild of rowChildren) {
 			if (rowChild.id && rowChild.id == `question${column}`) {
-				questionButton = rowChild;
+				questionButton = rowChild.childNodes[1];
 			}
-		}
+		}		
 
 		if (questionButton) {
 			const score = getScore(i, difficultly);
@@ -158,7 +158,11 @@ function getDifficultlyOffset(difficultly) {
 
 const span = document.getElementsByClassName('close')[0];
 span.onclick = function () {
-	document.getElementById('questionModal').style.display = 'none';
+	const questionModal = document.getElementById('questionModal');
+	questionModal.style.display = 'none';
+	questionModal.classList.remove('modal-wrong-answer');
+	questionModal.classList.remove('modal-correct-answer');
+
 	for (let i = 0; i < 4; i++) {
 		//Remove all active event listeners by cloning node
 		const oldAnswerButton = getAnswerButtonByIndex(i);
@@ -199,13 +203,15 @@ function displayModule(question, questionButton, score) {
 	}
 }
 
-function fixQuotes(string){
-	return string
-		.replace('&quot;', "'")
-		.replace('&quot;', "'")
-		.replace('&#039;', "'")
-		.replace('&amp;', '&')
-		.replace('&eacute;', 'é');
+function replaceAll(string, search, replace) {
+	return string.split(search).join(replace);
+}
+
+function fixQuotes(string) {
+	string = replaceAll(string, '&#039;', "'");
+	string = replaceAll(string, '&amp;', '&');
+	string = replaceAll(string, '&eacute;', 'é');
+	return replaceAll(string, '&quot;', "'");
 }
 
 function shuffleArray(array) {
@@ -236,6 +242,10 @@ function answerPicked(
 	score
 ) {
 	const isAnswerCorrect = answer == correctAnswer;
+	const questionModal = document.getElementById('questionModal');
+	questionModal.classList.add(
+		isAnswerCorrect ? 'modal-correct-answer' : 'modal-wrong-answer'
+	);
 	for (let i = 0; i < 4; i++) {
 		const answerButton = getAnswerButtonByIndex(i);
 		if (i == buttonClickedIndex) {
@@ -268,7 +278,7 @@ function questionCompleted() {
 			allQuestionsDisabled = false;
 		}
 	}
-	if (allQuestionsDisabled) {
+	if (allQuestionsDisabled || devShowFinalScreen) {
 		displayWinScreen();
 	}
 }

@@ -22,11 +22,10 @@ function setPlayerScores() {
 	for (let i = 0; i < Object.keys(players).length; i++) {
 		const playerScoreContainer = document.createElement('div');
 		const player = players[i];
-		playerScoreContainer.innerHTML = `<span id="player${i}Name">${player.name}</span>: <span id="player${i}Score">${player.score}</span>`;
-		playerScoreContainer.setAttribute(
-			'style',
-			`width: ${playerNameWidth}%; float: left;`
-		);
+        playerScoreContainer.innerHTML = `<span id="player${i}Name">${player.name}</span>: <span id="player${i}Score">${player.score}</span>`;
+        
+		playerScoreContainer.classList.add(`col-xs-${12/Object.keys(players).length}`);
+        playerScoreContainer.classList.add('playerName');
 
 		playerNameDisplayContainer.appendChild(playerScoreContainer);
 	}
